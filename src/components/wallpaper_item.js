@@ -8,6 +8,7 @@ const WallpaperItem = ({file}) => {
             previewImage = previewImage.replace(/&amp;/g,"&");
             let subreddit = "https://reddit.com/r/" + file.data.subreddit;
             let post_link = "https://reddit.com" + file.data.permalink;
+            
             return (
                 <div className="col-sm-12 col-md-6 col-lg-4">
                     <div className=" card-link">

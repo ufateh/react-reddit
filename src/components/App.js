@@ -7,18 +7,13 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.wallpaperSubreddits = 'wallpapers+wallpaper+widescreenwallpaper+wqhd_wallpaper';
-    this.portraitSubreddits = 'mobilewallpapers+amoledbackgrounds+verticalwallpapers';
-    this.memesSubreddits = 'memes+dankmemes+memeeconomy+animemes';
-    this.subredditsArray = ['wallpaper','wallpapers','widescreenwallpaper','wqhd_wallpaper','memes', 'dankmemes', 'memeeconomy','animemes', 
-                                      'mobilewallpapers', 'amoledbackgrounds', 'verticalwallpapers'];
     this.url = 'https://www.reddit.com/r/';
     this.sorts = ['hot','new','top','controversial','rising'];
   }
     
   state = {
-    currentSubreddit: 'wallpapers+wallpaper+widescreenwallpaper+wqhd_wallpaper',
-    sort: 'hot',
+    currentSubreddit: 'reactjs',
+    sort: 'new',
     files: [],
     after: null,
     before: null,
@@ -111,8 +106,6 @@ class App extends React.Component {
   searchSubreddit(subreddit) {
     if (subreddit.length !== 0) {
       this.changeSubreddit(subreddit);
-    } else {
-      this.changeSubreddit(this.wallpaperSubreddits);
     }
   }
 
@@ -140,16 +133,7 @@ class App extends React.Component {
       contentJSX = <div className="p-2"><center>Loading...</center></div>;
     }
 
-    let currentSubreddit;
-    if (this.state.currentSubreddit === this.wallpaperSubreddits) {
-      currentSubreddit = "Landscape Wallpapers";
-    } else if (this.state.currentSubreddit === this.portraitSubreddits) {
-      currentSubreddit = "Portrait Wallpapers";
-    } else if (this.state.currentSubreddit === this.memesSubreddits) {
-      currentSubreddit = "Memes Subreddits";
-    } else {
-      currentSubreddit = "r/" + this.state.currentSubreddit;
-    }
+    let currentSubreddit = "r/" + this.state.currentSubreddit;
 
     return (
       <div className="container">
@@ -159,14 +143,6 @@ class App extends React.Component {
             <button className="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {currentSubreddit} &nbsp;
             </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a className="dropdown-item" href="#subChange" onClick={() => this.changeSubreddit(this.wallpaperSubreddits)}>Landscape Wallpapers</a>
-              <a className="dropdown-item" href="#subChange" onClick={() => this.changeSubreddit(this.portraitSubreddits)}>Portrait Wallpapers</a>
-              <a className="dropdown-item" href="#subChange" onClick={() => this.changeSubreddit(this.memesSubreddits)}>Memes Subreddits</a>
-              {this.subredditsArray.map((subreddit, index) => (
-                <a className="dropdown-item" key={index} href="#subChange" onClick={() => this.changeSubreddit(subreddit)}>r/{subreddit}</a>
-              ))}
-            </div>
           </div>
           <div className="dropdown m-2" style={{display: "inline"}}>
             <button className="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -184,7 +160,7 @@ class App extends React.Component {
         <br/>
         {contentJSX}
         <br/>
-        <footer><center><p>Open-source available on <a href="https://github.com/gauravjot/react-reddit-wallpapers">Github</a>.<br/>Some images can be explicit, please use it on your own risk.</p></center></footer>
+        <footer><center><p>Taken from github</p></center></footer>
       </div>
     );
   }
